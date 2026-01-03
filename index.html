@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tablas de Multiplicar</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: white;
+            margin-bottom: 50px;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .tabla {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .tabla:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+        }
+
+        .tabla h2 {
+            text-align: center;
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+        }
+
+        .tabla table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .tabla td {
+            padding: 10px;
+            text-align: center;
+            border-bottom: 1px solid #eee;
+            font-weight: 500;
+        }
+
+        .tabla tr:hover {
+            background: #f5f5f5;
+        }
+
+        .tabla .numero {
+            color: #764ba2;
+            font-weight: bold;
+        }
+
+        .tabla .resultado {
+            color: #667eea;
+            font-size: 1.1em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎨 Tablas de Multiplicar</h1>
+        <div class="grid" id="tablas"></div>
+    </div>s
+
+    <script>
+        const container = document.getElementById('tablas');
+
+        for (let tabla = 1; tabla <= 12; tabla++) {
+            const div = document.createElement('div');
+            div.className = 'tabla';
+            
+            let html = `<h2>Tabla del ${tabla}</h2><table>`;
+            
+            for (let i = 1; i <= 10; i++) {
+                html += `
+                    <tr>
+                        <td><span class="numero">${tabla}</span> × <span class="numero">${i}</span></td>
+                        <td><span class="resultado">${tabla * i}</span></td>
+                    </tr>
+                `;
+            }
+            
+            html += '</table>';
+            div.innerHTML = html;
+            container.appendChild(div);
+        }
+    </script>
+</body>
+</html>
